@@ -67,6 +67,7 @@ public class PickerView extends View {
     private boolean autoFitSize;
     private boolean curved;
     private Drawable selectedItemDrawable;
+    private boolean showSelectedItemDrawable;
     private int[] DEFAULT_GRADIENT_COLORS = new int[]{0xcffafafa, 0x9ffafafa, 0x5ffafafa};
     private int[] gradientColors = DEFAULT_GRADIENT_COLORS;
     private GradientDrawable topMask;
@@ -164,6 +165,7 @@ public class PickerView extends View {
         isCyclic = typedArray.getBoolean(R.styleable.PickerView_isCyclic, false);
         autoFitSize = typedArray.getBoolean(R.styleable.PickerView_autoFitSize, true);
         curved = typedArray.getBoolean(R.styleable.PickerView_curved, false);
+        showSelectedItemDrawable = typedArray.getBoolean(R.styleable.PickerView_showSelectedItemDrawable, true);
         typedArray.recycle();
 
         initPaints();
@@ -326,6 +328,15 @@ public class PickerView extends View {
         }
     }
 
+    public void setGradientColors(int[] gradientColors) {
+        this.gradientColors = gradientColors;
+        if (topMask != null || bottomMask != null) {
+            topMask = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, gradientColors);
+            bottomMask = new GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP, gradientColors);
+            invalidate();
+        }
+    }
+
     public int getSelectedItemPosition() {
         return clampItemPosition(selectedItemPosition);
     }
@@ -409,13 +420,18 @@ public class PickerView extends View {
         checkNotNull(adapter, "adapter == null");
         if (adapter.getItemCount() == 0 || itemHeight == 0) return;
 
-        if (!isInEditMode()) {
+        if (!isInEditMode() && showSelectedItemDrawable) {
             selectedItemDrawable.setBounds(0, (getMeasuredHeight() - itemHeight) / 2, getMeasuredWidth(), (getMeasuredHeight() + itemHeight) / 2);
             selectedItemDrawable.draw(canvas);
         }
 
         drawItems(canvas);
         drawMasks(canvas);
+    }
+
+    public void setShowSelectedItemDrawable(boolean show) {
+        showSelectedItemDrawable = show;
+        invalidate();
     }
 
     private void drawItems(Canvas canvas) {

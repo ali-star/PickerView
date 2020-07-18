@@ -1,5 +1,6 @@
 package top.defaults.pickerviewapp;
 
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +23,7 @@ public class DefaultPickerActivity extends AppCompatActivity {
 
         pickerView.setItems(Item.sampleItems(), item -> textView.setText(item.getText()));
         pickerView.setSelectedItemPosition(4);
+        pickerView.setGradientColors(new int[] {0x9fffffff, 0x9fffffff, 0x9fffffff});
         Typeface typeface = Typeface.createFromAsset(getAssets(), "SpaceMono-Regular.ttf");
         pickerView.setTypeface(typeface);
     }

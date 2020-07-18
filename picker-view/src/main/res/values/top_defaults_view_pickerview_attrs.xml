@@ -7,6 +7,7 @@
     <attr name="isCyclic" format="boolean" />
     <attr name="autoFitSize" format="boolean" />
     <attr name="curved" format="boolean" />
+    <attr name="showSelectedItemDrawable" format="boolean" />
 
     <declare-styleable name="PickerView">
         <attr name="preferredMaxOffsetItemCount" />
@@ -16,6 +17,7 @@
         <attr name="isCyclic" />
         <attr name="autoFitSize" />
         <attr name="curved" />
+        <attr name="showSelectedItemDrawable" />
     </declare-styleable>
 
     <declare-styleable name="PickerViewGroup">
