@@ -18,6 +18,7 @@ public class PickerViewGroup extends LinearLayout {
     protected int textColor = Color.BLACK;
     protected boolean autoFitSize;
     protected boolean curved;
+    private boolean showSelectedItemDrawable;
 
     public PickerViewGroup(Context context) {
         this(context, null);
@@ -40,6 +41,7 @@ public class PickerViewGroup extends LinearLayout {
         textColor = typedArray.getColor(R.styleable.PickerViewGroup_textColor, Color.BLACK);
         autoFitSize = typedArray.getBoolean(R.styleable.PickerViewGroup_autoFitSize, true);
         curved = typedArray.getBoolean(R.styleable.PickerViewGroup_curved, false);
+        showSelectedItemDrawable = typedArray.getBoolean(R.styleable.PickerViewGroup_showSelectedItemDrawable, true);
         typedArray.recycle();
     }
 
@@ -60,6 +62,22 @@ public class PickerViewGroup extends LinearLayout {
         }
     }
 
+    public void setGradientColors(int[] gradientColors) {
+        int count = getChildCount();
+        for (int i = 0; i < count; i++) {
+            PickerView pickerView = (PickerView) getChildAt(i);
+            pickerView.setGradientColors(gradientColors);
+        }
+    }
+
+    public void setShowSelectedItemDrawable(boolean show) {
+        int count = getChildCount();
+        for (int i = 0; i < count; i++) {
+            PickerView pickerView = (PickerView) getChildAt(i);
+            pickerView.setShowSelectedItemDrawable(show);
+        }
+    }
+
     protected void settlePickerView(PickerView pickerView) {
         settlePickerView(pickerView, false);
     }
@@ -77,6 +95,7 @@ public class PickerViewGroup extends LinearLayout {
         pickerView.setTextColor(textColor);
         pickerView.setAutoFitSize(autoFitSize);
         pickerView.setCurved(curved);
+        pickerView.setShowSelectedItemDrawable(showSelectedItemDrawable);
     }
 
     protected void addPickerView(PickerView pickerView, boolean narrow) {

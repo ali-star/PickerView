@@ -27,6 +27,7 @@
         <attr name="textColor" />
         <attr name="autoFitSize" />
         <attr name="curved" />
+        <attr name="showSelectedItemDrawable" />
     </declare-styleable>
 
     <declare-styleable name="DateTimePickerView">

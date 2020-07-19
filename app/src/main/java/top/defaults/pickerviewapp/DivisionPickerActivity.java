@@ -1,5 +1,6 @@
 package top.defaults.pickerviewapp;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
@@ -29,6 +30,7 @@ public class DivisionPickerActivity extends AppCompatActivity {
 
         final List<DivisionModel> divisions = Divisions.get(this);
         divisionPicker.setDivisions(divisions);
+        // divisionPicker.setGradientColors(new int[] { Color.RED, Color.GREEN, Color.BLUE });
         divisionPicker.setOnSelectedDateChangedListener(division -> textView.setText(Division.Helper.getCanonicalName(division)));
     }
 }
