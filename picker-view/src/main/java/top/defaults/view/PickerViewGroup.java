@@ -3,6 +3,7 @@ package top.defaults.view;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -75,6 +76,22 @@ public class PickerViewGroup extends LinearLayout {
         for (int i = 0; i < count; i++) {
             PickerView pickerView = (PickerView) getChildAt(i);
             pickerView.setShowSelectedItemDrawable(show);
+        }
+    }
+
+    public void setTypeface(Typeface typeface) {
+        int count = getChildCount();
+        for (int i = 0; i < count; i++) {
+            PickerView pickerView = (PickerView) getChildAt(i);
+            pickerView.setTypeface(typeface);
+        }
+    }
+
+    public void setItemHeight(int itemHeight) {
+        int count = getChildCount();
+        for (int i = 0; i < count; i++) {
+            PickerView pickerView = (PickerView) getChildAt(i);
+            pickerView.setItemHeight(itemHeight);
         }
     }
 
