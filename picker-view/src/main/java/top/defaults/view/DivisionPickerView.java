@@ -118,6 +118,12 @@ public class DivisionPickerView extends PickerViewGroup {
         return divisionPicker;
     }
 
+    public void setSelectedItemsPositions(int picker1, int picker2, int picker3) {
+        provincePicker.setSelectedItemPosition(picker1);
+        cityPicker.setSelectedItemPosition(picker2);
+        divisionPicker.setSelectedItemPosition(picker3);
+    }
+
     public Division getSelectedDivision() {
         Division division = null;
         if (type == TYPE_ALL) {
